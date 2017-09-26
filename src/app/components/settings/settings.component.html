@@ -1,0 +1,20 @@
+<h1 md-dialog-title>Настройки генерации</h1>
+<div md-dialog-content>
+  <section class="settings-item mat-typography">
+    <md-form-field>
+      <input mdInput type="number" min="1" max="100" placeholder="Количество генерируемых вариантов заданий" value="30">
+    </md-form-field>
+  </section>
+  <section class="settings-item mat-typography">
+    <md-checkbox>Генерировать задания</md-checkbox>
+    <p>Описание задания к графу будет помещено сверху каждого изображения</p>
+  </section>
+  <section class="settings-item mat-typography">
+    <md-checkbox>Режим разработчика</md-checkbox>
+    <p>Разрешает подгружать сторонние задания на лету</p>
+  </section>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button color="primary">ОК</button>
+  <button md-button>Отмена</button>
+</div>

@@ -1,0 +1,26 @@
+<div class="layout">
+
+  <md-toolbar color="primary" class="toolbar-handle">
+    <span>Генератор заданий по теории графов</span>
+    <div class="spacer"></div>
+    <button (click)="maximize()" md-icon-button color="secondary">
+      <md-icon>web_asset</md-icon>
+    </button>
+    <button (click)="quit()" md-icon-button color="secondary">
+      <md-icon>close</md-icon>
+    </button>
+  </md-toolbar>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <md-toolbar color="primary">
+    <div class="spacer"></div>
+    <button md-button (click)="openSettings()">
+      <md-icon>settings</md-icon>
+      Настройки
+    </button>
+  </md-toolbar>
+
+</div>
