@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/Subject';
 import { SettingsService } from '../../providers/settings.service';
 
 import 'rxjs/add/operator/takeUntil';
+import { TaskRunnerService } from '../../providers/task-runner.service';
+import { ElectronService } from '../../providers/electron.service';
 
 @Component({
   selector: 'app-graph-list',
@@ -17,13 +19,16 @@ export class GraphListComponent implements OnInit, OnDestroy {
   private canvasHeight = 480;
   private variantsNumber = 15;
   private nodesCount = 16;
+  private canvases: HTMLCanvasElement[] = [];
 
-  private graphs: Graph[] = [];
+  graphs: Graph[] = [];
 
   private destroyed: Subject<void> = new Subject();
 
   constructor(private graphService: GraphService,
-              private settingsService: SettingsService) {
+              private settingsService: SettingsService,
+              private taskRunnerService: TaskRunnerService,
+              private electronService: ElectronService) {
   }
 
   ngOnInit(): void {
@@ -54,8 +59,28 @@ export class GraphListComponent implements OnInit, OnDestroy {
     }
   }
 
-  private regenerate(index: number): void {
+  regenerate(index: number): void {
     this.graphs[index] = this.graphService.generateGraph(this.nodesCount);
+  }
+
+  saveAll(): void {
+
+    const dir = this.electronService.createResultDir(this.taskRunnerService.currentPlugin);
+
+    for (let i = 0; i < this.graphs.length; i++) {
+      this.save(i, dir);
+    }
+
+  }
+
+  save(index: number, dir: string): void {
+    const result = this.taskRunnerService.run(this.graphs[index]);
+    this.electronService.saveTextFile(`${dir}/${index + 1}.txt`, result);
+    this.electronService.saveImageFile(`${dir}/${index + 1}.png`, this.canvases[index]);
+  }
+
+  saveCanvas(index: number, canvas: HTMLCanvasElement) {
+    this.canvases[index] = canvas;
   }
 
 }

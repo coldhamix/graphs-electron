@@ -26,8 +26,6 @@ function createWindow() {
 
   win.loadURL('file://' + __dirname + '/index.html');
 
-  console.log(__dirname);
-
   if (serve) {
     win.webContents.openDevTools();
   }

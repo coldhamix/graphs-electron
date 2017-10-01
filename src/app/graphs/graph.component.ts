@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 import { Node } from './node';
 import { Edge } from './edge';
@@ -12,10 +12,12 @@ export class GraphComponent implements AfterViewChecked {
   @Input() height: number;
   @Input() nodes: Node[];
   @Input() edges: Edge[];
+  @Output() initCanvas = new EventEmitter();
 
   @ViewChild('canvas') private canvas: ElementRef;
 
   ngAfterViewChecked(): void {
+    this.initCanvas.emit(this.canvas.nativeElement);
     this.drawGraph();
   }
 
@@ -28,7 +30,9 @@ export class GraphComponent implements AfterViewChecked {
 
   private clearCanvas(): void {
     const context = this.canvas.nativeElement.getContext('2d');
-    context.clearRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+    context.fillStyle = 'black';
   }
 
   private drawEdges(): void {

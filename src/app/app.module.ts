@@ -18,6 +18,8 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { GraphListComponent } from './components/graph-list/graph-list.component';
 import { GraphsModule } from './graphs/graphs.module';
 import { SettingsService } from './providers/settings.service';
+import { TaskRunnerService } from './providers/task-runner.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,15 @@ import { SettingsService } from './providers/settings.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     GraphsModule,
     MaterialModule,
     AppRoutingModule
   ],
   providers: [
     ElectronService,
-    SettingsService
+    SettingsService,
+    TaskRunnerService
   ],
   bootstrap: [AppComponent],
   entryComponents: [SettingsComponent]

@@ -1,4 +1,4 @@
-<div class="layout">
+<div class="layout" *ngIf="loaded">
 
   <md-toolbar color="primary" class="toolbar-handle">
     <button *ngIf="!isMenuScreen()" (click)="goHome()" md-button color="secondary">
