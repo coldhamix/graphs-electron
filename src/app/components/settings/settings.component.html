@@ -2,19 +2,38 @@
 <div md-dialog-content>
   <section class="settings-item mat-typography">
     <md-form-field>
-      <input mdInput type="number" min="1" max="100" placeholder="Количество генерируемых вариантов заданий" value="30">
+      <input
+        [(ngModel)]="tasksCount"
+        mdInput
+        type="number"
+        min="1"
+        max="100"
+        required
+        placeholder="Количество генерируемых вариантов заданий" />
     </md-form-field>
   </section>
   <section class="settings-item mat-typography">
-    <md-checkbox>Генерировать задания</md-checkbox>
+    <md-form-field>
+      <input
+        [(ngModel)]="nodesCount"
+        mdInput
+        type="number"
+        min="6"
+        max="16"
+        required
+        placeholder="Количество вершин в графе" />
+    </md-form-field>
+  </section>
+  <section class="settings-item mat-typography">
+    <md-checkbox [(ngModel)]="printTaskDescription">Генерировать задания</md-checkbox>
     <p>Описание задания к графу будет помещено сверху каждого изображения</p>
   </section>
   <section class="settings-item mat-typography">
-    <md-checkbox>Режим разработчика</md-checkbox>
+    <md-checkbox [(ngModel)]="developerMode">Режим разработчика</md-checkbox>
     <p>Разрешает подгружать сторонние задания на лету</p>
   </section>
 </div>
 <div md-dialog-actions>
-  <button md-raised-button color="primary">ОК</button>
-  <button md-button>Отмена</button>
+  <button md-raised-button color="primary" (click)="save()">ОК</button>
+  <button md-button (click)="cancel()">Отмена</button>
 </div>

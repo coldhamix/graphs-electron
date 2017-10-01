@@ -2,65 +2,10 @@
   <md-card-content>
     <md-list>
       <h3 md-subheader>Выберите задание из списка</h3>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
-      </md-list-item>
-      <md-list-item>
-        <button md-raised-button color="primary">Выбрать</button>
-        <h4 md-line>Поиск кратчайшего пути</h4>
-        <p md-line>Алгоритмы Дейсктры, Беллмана-Форда</p>
+      <md-list-item *ngFor="let task of tasks">
+        <button md-raised-button color="primary" (click)="selectTask(task)">Выбрать</button>
+        <h4 md-line>{{ task.caption }}</h4>
+        <p md-line>{{ task.description }}</p>
       </md-list-item>
     </md-list>
   </md-card-content>
