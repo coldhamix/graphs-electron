@@ -66,7 +66,6 @@ export class GraphListComponent implements OnInit, OnDestroy {
   saveAll(): void {
 
     const dir = this.electronService.createResultDir(this.taskRunnerService.currentPlugin);
-
     for (let i = 0; i < this.graphs.length; i++) {
       this.save(i, dir);
     }
