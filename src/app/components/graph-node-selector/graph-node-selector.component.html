@@ -1,0 +1,9 @@
+<h4>Задание требует выбрать вершины</h4>
+<div *ngFor="let node of nodes">
+  {{ node.name }}:
+  <mat-button-toggle-group #group="matButtonToggleGroup" [ngModel]="node.value" (ngModelChange)="onChange($event, node)">
+      <mat-button-toggle mat-button-raised [value]="i" *ngFor="let nodeItem of nodesRange; let i = index">
+        {{ i + 1 }}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>

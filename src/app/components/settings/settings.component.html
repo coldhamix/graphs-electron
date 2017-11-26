@@ -1,39 +1,40 @@
-<h1 md-dialog-title>Настройки генерации</h1>
-<div md-dialog-content>
+<h1 mat-dialog-title>Настройки генерации</h1>
+<div mat-dialog-content>
   <section class="settings-item mat-typography">
-    <md-form-field>
+    <mat-form-field>
       <input
         [(ngModel)]="tasksCount"
-        mdInput
+        matInput
         type="number"
         min="1"
         max="100"
         required
         placeholder="Количество генерируемых вариантов заданий" />
-    </md-form-field>
+    </mat-form-field>
   </section>
   <section class="settings-item mat-typography">
-    <md-form-field>
+    <mat-form-field>
       <input
         [(ngModel)]="nodesCount"
-        mdInput
+        matInput
         type="number"
         min="6"
         max="16"
         required
         placeholder="Количество вершин в графе" />
-    </md-form-field>
+    </mat-form-field>
   </section>
   <section class="settings-item mat-typography">
-    <md-checkbox [(ngModel)]="printTaskDescription">Генерировать задания</md-checkbox>
-    <p>Описание задания к графу будет помещено сверху каждого изображения</p>
+    <mat-checkbox [(ngModel)]="directedGraph">Направленный граф</mat-checkbox>
+    <mat-checkbox [(ngModel)]="weightedGraph">Взвешенный граф</mat-checkbox>
+    <p>Настройки генерации графов</p>
   </section>
   <section class="settings-item mat-typography">
-    <md-checkbox [(ngModel)]="developerMode">Режим разработчика</md-checkbox>
-    <p>Разрешает подгружать сторонние задания на лету</p>
+    <mat-checkbox [(ngModel)]="developerMode">Режим разработчика</mat-checkbox>
+    <p>Разрешает подгружать сторонние задания из текущий папки</p>
   </section>
 </div>
-<div md-dialog-actions>
-  <button md-raised-button color="primary" (click)="save()">ОК</button>
-  <button md-button (click)="cancel()">Отмена</button>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="save()">ОК</button>
+  <button mat-button (click)="cancel()">Отмена</button>
 </div>

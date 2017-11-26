@@ -1,30 +1,31 @@
 <div class="layout" *ngIf="loaded">
 
-  <md-toolbar color="primary" class="toolbar-handle">
-    <button *ngIf="!isMenuScreen()" (click)="goHome()" md-button color="secondary">
-      <md-icon>arrow_back</md-icon>
+  <mat-toolbar color="primary" class="toolbar-handle">
+    <button *ngIf="!isMenuScreen()" (click)="goHome()" mat-button color="secondary">
+      <mat-icon>arrow_back</mat-icon>
       Назад
     </button>
     <span *ngIf="isMenuScreen()">Генератор заданий по теории графов</span>
     <div class="spacer"></div>
-    <button (click)="maximize()" md-icon-button color="secondary">
-      <md-icon>web_asset</md-icon>
+    <button (click)="maximize()" mat-icon-button color="secondary">
+      <mat-icon>web_asset</mat-icon>
     </button>
-    <button (click)="quit()" md-icon-button color="secondary">
-      <md-icon>close</md-icon>
+    <button (click)="quit()" mat-icon-button color="secondary">
+      <mat-icon>close</mat-icon>
     </button>
-  </md-toolbar>
+  </mat-toolbar>
 
   <div class="content" [class.centered]="isMenuScreen()">
     <router-outlet></router-outlet>
   </div>
 
-  <md-toolbar color="primary">
+  <mat-toolbar color="primary">
+    <p>Используйте перетаскивание для изменения положения вершин</p>
     <div class="spacer"></div>
-    <button md-button (click)="openSettings()">
-      <md-icon>settings</md-icon>
+    <button mat-button (click)="openSettings()">
+      <mat-icon>settings</mat-icon>
       Настройки
     </button>
-  </md-toolbar>
+  </mat-toolbar>
 
 </div>

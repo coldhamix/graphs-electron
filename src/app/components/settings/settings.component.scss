@@ -6,8 +6,12 @@
     color: rgba(0,0,0,.54);
   }
 
-  md-form-field {
+  mat-form-field {
     width: 100%;
+  }
+
+  mat-checkbox + mat-checkbox {
+    margin-left: 10px;
   }
 
 }

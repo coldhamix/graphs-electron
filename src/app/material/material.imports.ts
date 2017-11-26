@@ -1,16 +1,18 @@
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdDialogModule, MdIconModule, MdInputModule, MdListModule,
-  MdToolbarModule,
-} from '@angular/material';
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule,
+  MatToolbarModule } from '@angular/material';
+
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { Type } from '@angular/core';
 
 export const materialComponents: Type<any>[] = [
-  MdButtonModule,
-  MdCheckboxModule,
-  MdToolbarModule,
-  MdCardModule,
-  MdListModule,
-  MdIconModule,
-  MdDialogModule,
-  MdInputModule
+  MatButtonModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatCardModule,
+  MatListModule,
+  MatIconModule,
+  MatDialogModule,
+  MatInputModule,
+  MatButtonToggleModule
 ];

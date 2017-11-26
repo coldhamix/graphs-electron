@@ -12,3 +12,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.graph-card:last-of-type {
+  margin-bottom: 24px;
+}
+
+button[mat-button],
+button[mat-raised-button] {
+  text-transform: uppercase;
+}

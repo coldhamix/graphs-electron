@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, NgZone } from '@angular/core';
 import { ElectronService } from './providers/electron.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { SettingsComponent } from './components/settings/settings.component';
 import { Router } from '@angular/router';
 import { TaskRunnerService } from './providers/task-runner.service';
@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
   pipe: any;
 
   constructor(private electronService: ElectronService,
-              private dialog: MdDialog,
+              private dialog: MatDialog,
               private router: Router,
               private taskRunnerService: TaskRunnerService,
               private zone: NgZone) {

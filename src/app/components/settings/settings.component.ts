@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { SettingsService } from '../../providers/settings.service';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
+import { TaskRunnerService } from 'app/providers/task-runner.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -12,18 +14,29 @@ export class SettingsComponent {
   printTaskDescription: boolean;
   tasksCount: number;
   nodesCount: number;
+  weightedGraph: boolean;
+  directedGraph: boolean;
   developerMode: boolean;
 
   constructor (private settingsService: SettingsService,
-               private dialogRef: MdDialogRef<SettingsComponent>) {
+               private dialogRef: MatDialogRef<SettingsComponent>,
+               private taskRunnerService: TaskRunnerService,
+               private router: Router) {
     this.reset();
   }
 
   save(): void {
+
+    if (this.settingsService.developerMode !== this.developerMode) {
+      this.settingsService.developerMode = this.developerMode;
+      this.taskRunnerService.init().subscribe();
+    }
+
     this.settingsService.printTaskDescription = this.printTaskDescription;
-    this.settingsService.developerMode = this.developerMode;
     this.settingsService.tasksCount = this.tasksCount;
     this.settingsService.nodesCount = this.nodesCount >= 6 && this.nodesCount <= 16 ? this.nodesCount : 6;
+    this.settingsService.weightedGraph = this.weightedGraph;
+    this.settingsService.directedGraph = this.directedGraph;
     this.settingsService.notify();
     this.dialogRef.close();
   }
@@ -38,6 +51,8 @@ export class SettingsComponent {
     this.tasksCount = this.settingsService.tasksCount;
     this.nodesCount = this.settingsService.nodesCount;
     this.developerMode = this.settingsService.developerMode;
+    this.weightedGraph = this.settingsService.weightedGraph;
+    this.directedGraph = this.settingsService.directedGraph;
   }
 
 }

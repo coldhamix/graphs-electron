@@ -16,31 +16,36 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SettingsComponent } from './components/settings/settings.component';
 import { GraphListComponent } from './components/graph-list/graph-list.component';
-import { GraphsModule } from './graphs/graphs.module';
 import { SettingsService } from './providers/settings.service';
 import { TaskRunnerService } from './providers/task-runner.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GraphRendererModule } from 'app/graph-renderer/graph-renderer.module';
+import { graphServiceProvider } from 'app/graph-renderer/graph-service/graph.service.provider';
+import { GraphNodeSelectorComponent } from './components/graph-node-selector/graph-node-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SettingsComponent,
-    GraphListComponent
+    GraphListComponent,
+    GraphNodeSelectorComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    GraphsModule,
+    // GraphsModule,
+    GraphRendererModule,
     MaterialModule,
     AppRoutingModule
   ],
   providers: [
     ElectronService,
     SettingsService,
-    TaskRunnerService
+    TaskRunnerService,
+    graphServiceProvider
   ],
   bootstrap: [AppComponent],
   entryComponents: [SettingsComponent]

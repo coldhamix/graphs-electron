@@ -1,0 +1,6 @@
+<canvas #canvas nodesConnector nodeDragger 
+		[graphDrawer]="graph" [weighed]="weighed" [directed]="directed"
+		[width]="width" [height]="height" [isActive]="true"
+		(mousedown)="setNode($event)"
+		(mousemove)="drawGraph()"
+		(mouseup)="resetNode()"></canvas>	   

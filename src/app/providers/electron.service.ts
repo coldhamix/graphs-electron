@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TaskRunnerService } from './task-runner.service';
 import { Plugin } from '../model/plugin';
 
 // If you import a module but never use any of the imported values other than as TypeScript types,
@@ -8,6 +7,7 @@ import { ipcRenderer, remote } from 'electron';
 import * as fs from 'fs';
 import * as childProcess from 'child_process';
 import * as canvasBuffer from 'electron-canvas-to-buffer';
+import { Plugins } from 'app/model/plugins';
 
 @Injectable()
 export class ElectronService {
@@ -18,7 +18,7 @@ export class ElectronService {
   fs: typeof fs;
   canvasBuffer: typeof canvasBuffer;
 
-  constructor(protected taskRunnerService: TaskRunnerService) {
+  constructor() {
     // Conditional imports
     if (this.isElectron()) {
       this.ipcRenderer = window.require('electron').ipcRenderer;
@@ -60,6 +60,35 @@ export class ElectronService {
       });
       this.fs.rmdirSync(path);
     }
+  }
+
+  findCwdPlugins(): Plugins {
+    const cwd = { plugins: [] };
+    const suffix = '.plugin.js';
+    if (this.isElectron()) {
+      const files = this.fs.readdirSync('.');
+      for (let file of files) {
+        if (file.endsWith(suffix)) {
+          cwd.plugins.push(<Plugin> {
+            name: file.substring(0, suffix.length - 1),
+            description: 'Режим разработки: задание из текущей директории',
+            caption: file,
+            external: true
+          });
+        }
+      }
+    }
+
+    console.log(cwd);
+
+    return cwd;    
+  }
+
+  readFile(fileName: string): string {
+    if (this.isElectron()) {
+      return this.fs.readFileSync(`./${fileName}`, 'utf-8');
+    }
+    return '';
   }
 
   saveImageFile(name: string, canvas: HTMLCanvasElement): void {

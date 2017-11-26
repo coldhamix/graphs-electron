@@ -1,12 +1,12 @@
-<md-card>
-  <md-card-content>
-    <md-list>
-      <h3 md-subheader>Выберите задание из списка</h3>
-      <md-list-item *ngFor="let task of tasks">
-        <button md-raised-button color="primary" (click)="selectTask(task)">Выбрать</button>
-        <h4 md-line>{{ task.caption }}</h4>
-        <p md-line>{{ task.description }}</p>
-      </md-list-item>
-    </md-list>
-  </md-card-content>
-</md-card>
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <h3 mat-subheader>Выберите задание из списка</h3>
+      <mat-list-item *ngFor="let task of tasks">
+        <button mat-raised-button color="primary" (click)="selectTask(task)">Выбрать</button>
+        <h4 mat-line>{{ task.caption }}</h4>
+        <p mat-line>{{ task.description }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

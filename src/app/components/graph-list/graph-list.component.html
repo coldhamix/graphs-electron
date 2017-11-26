@@ -1,19 +1,23 @@
-<button class="generate" md-button (click)="saveAll()" md-raised-button color="primary">СГЕНЕРИРОВАТЬ ВСЕ ВАРИАНТЫ И РЕШЕНИЯ</button>
-<md-card class="graph-card" *ngFor="let graph of graphs; let i = index">
-  <md-card-header>
-    <md-card-title>Вариант {{ i + 1 }}</md-card-title>
-  </md-card-header>
-  <md-card-content>
-    <app-graph-component
-      [nodes]="graph.nodes"
-      [edges]="graph.edges"
+<button class="generate" (click)="saveAll()" mat-raised-button color="primary">Сгенерировать все варианты и решения</button>
+<mat-card class="graph-card" *ngFor="let graph of graphs; let i = index">
+  <mat-card-header>
+    <mat-card-title>Вариант {{ i + 1 }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <graph-component
+      [graph]="graph"
       [width]="canvasWidth"
       [height]="canvasHeight"
-      (initCanvas)="saveCanvas(i, $event)"
-    >
-    </app-graph-component>
-  </md-card-content>
-  <md-card-actions>
-    <button md-button (click)="regenerate(i)">ОБНОВИТЬ</button>
-  </md-card-actions>
-</md-card>
+      [weighed]="weighted"
+      [directed]="directed"
+      (initCanvas)="saveCanvas(i, $event)"></graph-component>
+    <app-graph-node-selector *ngIf="nodeSelectorEnabled"
+      [totalNodes]="graph.nodes.length" 
+      [inputNodes]="nodeSelectorNodes"
+      (nodeInputChange)="onNodeInputChanged(i, $event)">
+    </app-graph-node-selector>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="regenerate(i)">Обновить</button>
+  </mat-card-actions>
+</mat-card>

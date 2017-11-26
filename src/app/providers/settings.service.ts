@@ -10,8 +10,11 @@ export class SettingsService {
 
   private _printTaskDescription = true;
   private _tasksCount = 25;
-  private _nodesCount = 16;
+  private _nodesCount = 8;
   private _developerMode = false;
+  private _weightedGraph = true;
+  private _directedGraph = false;
+
 
   get printTaskDescription(): boolean {
     return this._printTaskDescription;
@@ -32,6 +35,14 @@ export class SettingsService {
   get developerMode(): boolean {
     return this._developerMode;
   }
+  get weightedGraph(): boolean {
+    
+    return this._weightedGraph;
+  }
+
+  get directedGraph(): boolean {
+    return this._directedGraph;
+  }
 
   set developerMode(value: boolean) {
     this._developerMode = value;
@@ -43,6 +54,14 @@ export class SettingsService {
 
   set nodesCount(value: number) {
     this._nodesCount = value;
+  }
+  
+  set weightedGraph(weightedGraph: boolean) {
+    this._weightedGraph = weightedGraph;
+  }
+
+  set directedGraph(directedGraph: boolean) {
+    this._directedGraph = directedGraph;
   }
 
   notify(): void {
