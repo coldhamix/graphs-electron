@@ -15,7 +15,7 @@ function floyd(graph, inputNodes) {
 		return str;
 	}
 
-  	let str = "shortests paths:\r\n";
+  	let str = "кратчашие пути:\r\n";
   	const matrix = graph.matrix;
   	const paths = [];
 
@@ -44,14 +44,8 @@ function floyd(graph, inputNodes) {
 	for(let i = 0; i < matrix.length; i++) {
   		for(let j = 0; j < matrix[i].length; j++) {
   			if(i != j) {
-  				str += ' ';
-  				str += (i + 1);
-  				str += '-';
-  				str += getPath(paths, i, j);
-  				str += (j + 1);
-  				str += ': ';
-  				str += matrix[i][j]; 
-  				str += ';\r\n';
+				str = str + ' ' + (i + 1) + '-' + getPath(paths, i, j)
+						  + (j + 1) + ': ' + matrix[i][j] + ';\r\n';
   			} 
   		}
 	}

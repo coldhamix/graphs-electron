@@ -1,2 +1,0 @@
-shortest path from 9 to 4 is 
-9-4, 7

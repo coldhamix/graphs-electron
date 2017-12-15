@@ -1,2 +1,0 @@
-shortest path from 5 to 6 is 
-5-7-6, 6
