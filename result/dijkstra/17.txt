@@ -1,0 +1,2 @@
+shortest path from 9 to 6 is 
+9-6, 2

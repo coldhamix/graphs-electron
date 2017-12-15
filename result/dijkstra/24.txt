@@ -1,0 +1,2 @@
+shortest path from 4 to 6 is 
+4-3-8-6, 18

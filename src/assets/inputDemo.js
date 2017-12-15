@@ -1,4 +1,5 @@
 function inputDemo(graph, inputNodes) {
+	console.log(graph.matrix);
   var str = "Adjacency matrix: \n";
   for (var i = 0; i < graph.matrix.length; i++) {
     for (var j = 0; j < graph.matrix[i].length; j++) {

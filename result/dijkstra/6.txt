@@ -1,0 +1,2 @@
+shortest path from 2 to 6 is 
+2-9-6, 6
