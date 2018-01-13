@@ -87,7 +87,8 @@ export class AdjacencyMatrix {
 	}
 
 	public generateMatrix(): number[][] {
-		const probability = (0.45 - 0.04 * (this.nodesNumber - 6)); 
+		// const probability = (0.10 - 0.007 * (this.nodesNumber - 6)); 
+		const probability = 0.07;
 		for (let i = 0; i < this.nodesNumber; i++) { 
 			for (let j = 0; j < this.nodesNumber; j++) { 				
 				if (i != j) { 
@@ -104,6 +105,7 @@ export class AdjacencyMatrix {
 			} 
 		} 
 
+		
 		for (let i = 0; i < this.nodesNumber; i++) {
 			for (let j = 0; j < this.nodesNumber; j++) { 
 				if (this.adjacencyMatrix[i][j] != 0) {
@@ -115,7 +117,7 @@ export class AdjacencyMatrix {
 					while(k == i || k == this.nodesNumber) {
 						k = Math.round(Math.random() * this.nodesNumber);
 					} 
-
+					const weight = 1 + Math.round(Math.random() * 9);
 					this.connectNodes(i, k);
 				} 
 			} 
